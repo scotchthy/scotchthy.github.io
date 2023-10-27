@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=no"
+    />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+
+    <title>Bangkok Adventure</title>
+
+    <script src="//cdn.8thwall.com/web/aframe/8frame-1.3.0.min.js"></script>
+
+    <!-- XR Extras - provides utilities like load screen, almost there, and error handling.
+         See github.com/8thwall/web/tree/master/xrextras -->
+    <script src="//cdn.8thwall.com/web/xrextras/xrextras.js"></script>
+
+    <!-- Landing Pages - see https://www.8thwall.com/docs/web/#landing-pages -->
+    <script src="//cdn.8thwall.com/web/landing-page/landing-page.js"></script>
+
+    <!-- 8thWall Web - Replace the app key here with your own app key -->
+    <script
+      async
+      src="//apps.8thwall.com/xrweb?appKey=5w5ckbf8mmNUKd4FeuRPVrGvv1aaOo9iY4cjsEnlpFjxqziKeImYJF9UljTBZivrymVs0t"
+    ></script>
+
+    <link rel="stylesheet" href="./public/index.css" />
+  </head>
+
+  <body>
+    <div id="splashimage">
+      <div id="start" style="display: none"></div>
+    </div>
+
+    <a-scene
+      xrextras-gesture-detector
+      landing-page="mediaSrc: #bgUrl; sceneEnvMap: hill"
+      xrextras-loading="loadBackgroundColor: #007AFF;
+      cameraBackgroundColor: #5AC8FA;
+      loadImage: #loadingImage;
+      loadAnimation: pulse"
+      xrextras-runtime-error
+      renderer="colorManagement:true"
+      xrconfig
+      xrweb="disableWorldTracking: true"
+    >
+      <a-assets>
+        <!-- <a-asset-item
+          id="bus"
+          src="https://s3.ap-southeast-1.amazonaws.com/dev-storage.mxrth.co/ptt/ptt-content-labs/models/gltf/PTT_Bus.gltf"
+        ></a-asset-item> -->
+        <a-asset-item
+          id="rinsingSpray"
+          src="https://s3.ap-southeast-1.amazonaws.com/dev-storage.mxrth.co/ptt/ptt-content-labs/models/gltf/PTT_RinsingSpray.gltf"
+        ></a-asset-item>
+        <!-- <a-asset-item
+          id="cola"
+          src="https://s3.ap-southeast-1.amazonaws.com/dev-storage.mxrth.co/ptt/ptt-content-labs/models/gltf/PTT_Cola.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="condimentHolder"
+          src="https://s3.ap-southeast-1.amazonaws.com/dev-storage.mxrth.co/ptt/ptt-content-labs/models/gltf/PTT_CondimentHolder.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="greenCurry"
+          src="https://s3.ap-southeast-1.amazonaws.com/dev-storage.mxrth.co/ptt/ptt-content-labs/models/gltf/PTT_GreenCurry.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="shoes"
+          src="https://s3.ap-southeast-1.amazonaws.com/dev-storage.mxrth.co/ptt/ptt-content-labs/models/gltf/PTT_Shoes.gltf"
+        ></a-asset-item> -->
+        <img id="loadingImage" src="public/images/logo_250.png" />
+        <img id="bgUrl" src="public/images/landing_bg.jpg" />
+      </a-assets>
+
+      <!-- add capture button -->
+      <xrextras-capture-button
+        capture-mode="photo"
+        cap
+      ></xrextras-capture-button>
+
+      <!-- configure capture settings -->
+      <xrextras-capture-config
+        max-duration-ms="15000"
+        max-dimension="1280"
+        enable-end-card="true"
+        cover-image-url=""
+        end-card-call-to-action="Try it at:"
+        short-link=""
+        footer-image-url="public/images/Logo.png"
+        watermark-image-url="public/images/Logo.png"
+        watermark-max-width="100"
+        watermark-max-height="10"
+        watermark-location="topRight"
+        file-name-prefix="my-capture-"
+        request-mic="manual"
+      >
+      </xrextras-capture-config>
+
+      <!-- add capture preview -->
+      <xrextras-capture-preview back></xrextras-capture-preview>
+
+      <a-camera
+        position="0 4 10"
+        raycaster="objects: .cantap"
+        cursor="fuse: false; rayOrigin: mouse;"
+      >
+      </a-camera>
+
+      <a-light type="directional" intensity="0.5" position="1 1 1"></a-light>
+
+      <a-light type="ambient" intensity="1"></a-light>
+
+      <xrextras-named-image-target name="rinsingSpray">
+        <a-entity
+          xrextras-one-finger-rotate
+          gltf-model="#rinsingSpray"
+          scale="0.01 0.01 0.01"
+        ></a-entity>
+      </xrextras-named-image-target>
+
+      <!-- <xrextras-named-image-target name="bus">
+        <a-entity
+          xrextras-one-finger-rotate
+          gltf-model="#bus"
+          scale="0.006 0.006 0.006"
+          rotation="0 330 0"
+        ></a-entity>
+      </xrextras-named-image-target>
+
+      <xrextras-named-image-target name="cola">
+        <a-entity
+          xrextras-one-finger-rotate
+          gltf-model="#cola"
+          scale="0.006 0.006 0.006"
+          rotation="0 330 0"
+        ></a-entity>
+      </xrextras-named-image-target>
+
+      <xrextras-named-image-target name="condimentHolder">
+        <a-entity
+          xrextras-one-finger-rotate
+          gltf-model="#condimentHolder"
+          scale="0.006 0.006 0.006"
+          rotation="0 330 0"
+        ></a-entity>
+      </xrextras-named-image-target>
+
+      <xrextras-named-image-target name="greenCurry">
+        <a-entity
+          xrextras-one-finger-rotate
+          gltf-model="#greenCurry"
+          scale="0.006 0.006 0.006"
+          rotation="0 330 0"
+        ></a-entity>
+      </xrextras-named-image-target> -->
+
+      <!-- <xrextras-named-image-target name="shoes">
+        <a-entity
+          xrextras-one-finger-rotate
+          gltf-model="#shoes"
+          scale="0.006 0.006 0.006"
+          rotation="0 330 0"
+        ></a-entity>
+      </xrextras-named-image-target> -->
+    </a-scene>
+
+    <script>
+      // มีข้อมูลแค่ bus , condimentHolder , shire , shoes
+      var googleMap = {
+        rinsingSpray: "https://ptt-content-lab.mxrth.co:3000/",
+        handfan: "https://ptt-content-lab.mxrth.co:3000/",
+        bus: "https://moovitapp.com/index/th/%E0%B8%A3%E0%B8%B0%E0%B8%9A%E0%B8%9A%E0%B8%82%E0%B8%99%E0%B8%AA%E0%B9%88%E0%B8%87%E0%B8%AA%E0%B8%B2%E0%B8%98%E0%B8%B2%E0%B8%A3%E0%B8%93%E0%B8%B0-line-88-Bangkok-2401-1363476-4195062-0",
+        condimentHolder:
+          "https://www.google.com/maps/search/%E0%B8%A3%E0%B9%89%E0%B8%B2%E0%B8%99%E0%B8%AD%E0%B8%B2%E0%B8%AB%E0%B8%B2%E0%B8%A3%E0%B8%95%E0%B8%B2%E0%B8%A1%E0%B8%AA%E0%B8%B1%E0%B9%88%E0%B8%87%E0%B9%81%E0%B8%96%E0%B8%A7%E0%B8%81%E0%B8%A3%E0%B8%B8%E0%B8%87%E0%B9%80%E0%B8%97%E0%B8%9E/@13.7508962,100.5137659,13.3z?entry=ttu",
+        greenCurry: "https://ptt-content-lab.mxrth.co:3000/",
+        syamsi: "https://ptt-content-lab.mxrth.co:3000/",
+        flowerGarland: "https://ptt-content-lab.mxrth.co:3000/",
+        yadom: "https://ptt-content-lab.mxrth.co:3000/",
+        lottery: "https://ptt-content-lab.mxrth.co:3000/",
+        shire:
+          "https://www.google.com/maps/search/%E0%B8%A8%E0%B8%B2%E0%B8%A5/@13.7464237,100.4927733,15z/data=!3m1!4b1?entry=ttu",
+        shoes:
+          "https://www.google.com/maps/search/%E0%B8%A7%E0%B8%B1%E0%B8%94/@13.7373794,100.5129349,14z/data=!3m1!4b1?entry=ttu",
+        cola: "https://ptt-content-lab.mxrth.co:3000/",
+        spoon: "https://ptt-content-lab.mxrth.co:3000/",
+        tukTuk: "https://ptt-content-lab.mxrth.co:3000/",
+        zebra: "https://ptt-content-lab.mxrth.co:3000/",
+      };
+
+      var model;
+
+      // window.addEventListener("xrimagefound", function ({ detail }) {
+      //   alert("detail: ", detail);
+      // });
+
+      window.addEventListener("load", function () {
+        XR8.XrController.configure({
+          imageTargets: [
+            "rinsingSpray",
+            "shoes",
+            "greenCurry",
+            "condimentHolder",
+            "cola",
+          ],
+          enableLighting: true,
+          disableWorldTracking: true,
+        });
+      });
+
+      document.querySelector("#start").addEventListener("click", () => {
+        alert(model);
+        window.open(googleMap[model]);
+      });
+
+      AFRAME.registerComponent("cap", {
+        init: function () {
+          window.addEventListener("mediarecorder-photocomplete", (e) => {
+            document.getElementById("start").style.display = "block";
+          });
+        },
+      });
+
+      AFRAME.registerComponent("back", {
+        init: function () {
+          window.addEventListener("mediarecorder-previewclosed", (e) => {
+            document.getElementById("start").style.display = "none";
+          });
+        },
+      });
+
+      AFRAME.registerComponent("found-model", {
+        init: function () {
+          // On Init
+          this.el.children[0].setAttribute("visible", false);
+
+          // On Visible
+          this.el.sceneEl.addEventListener("targetFound", (e) => {
+            if (this.el === e.target) {
+              e.target.children[0].setAttribute("visible", true);
+              model = e.target.getAttribute("data");
+
+              alert("model: ", model);
+
+              document.querySelector("#start");
+
+              if (model === "rinsingSpray") {
+                alert("model : ", model);
+              } else if (model === "handfan") {
+                alert("model : ", model);
+              } else if (model === "bus") {
+                alert("model : ", model);
+              } else if (model === "condimentHolder") {
+                alert("model : ", model);
+              } else if (model === "greenCurry") {
+                alert("model : ", model);
+              } else if (model === "syamsi") {
+                alert("model : ", model);
+              } else if (model === "flowerGarland") {
+                alert("model : ", model);
+              } else if (model === "yadom") {
+                alert("model : ", model);
+              } else if (model === "lottery") {
+                alert("model : ", model);
+              } else if (model === "shire") {
+                alert("model : ", model);
+              } else if (model === "shoes") {
+                alert("model : ", model);
+              } else if (model === "cola") {
+                alert("model : ", model);
+              } else if (model === "spoon") {
+                alert("model : ", model);
+              } else if (model === "tukTuk") {
+                alert("model : ", model);
+              } else if (model === "zebra") {
+                alert("model : ", model);
+              } else {
+                alert("not found model");
+              }
+            }
+          });
+
+          // On Not VisibleF
+          this.el.sceneEl.addEventListener("targetLost", (e) => {
+            if (this.el === e.target) {
+              e.target.children[0].setAttribute("visible", false);
+            }
+          });
+        },
+      });
+    </script>
+  </body>
+</html>

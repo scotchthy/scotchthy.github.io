@@ -1,0 +1,88 @@
+#splashimage {
+  z-index: 998;
+  height: 10%;
+  position: relative;
+}
+
+#start {
+  background-image: url("./images/MapsIcon.png");
+  background-size: 100%;
+  width: 40px !important;
+  height: 40px !important;
+  bottom: -895% !important;
+  left: 45%;
+  position: absolute;
+  /* background-size: 100%;
+  width: 40px !important;
+  height: 40px !important;
+  min-width: 0em !important;
+  position: absolute;
+  bottom: -900%;
+  left: 45% !important;
+  background-color: blue; */
+}
+
+/* #actionButton {
+  background-image: url("./images/ShareButton.png");
+  background-size: 100%;
+  position: absolute;
+  top: -900% !important;
+  left: 67% !important;
+  width: 40px !important;
+  height: 40px !important;
+  background-color: red;
+} */
+#actionButton {
+  background-image: url("./images/ShareButton.png");
+  background-color: transparent !important;
+  color: black;
+  background-size: 100%;
+  position: absolute;
+  width: 50px !important;
+  height: 50px !important;
+  min-width: 0em !important;
+  top: -1.5rem !important;
+  left: 67% !important;
+  /* background-color: red; */
+}
+@media (max-width: 320px) {
+  #actionButton {
+    top: -1rem !important;
+  }
+}
+
+#closePreviewButton {
+  background-image: url("./images/BackButton.png");
+  background-size: 100%;
+  width: 50px !important;
+  height: 50px !important;
+  top: 99%;
+  right: 70%;
+}
+
+.progress-track {
+  stroke: #f3a833 !important;
+}
+
+#downloadButton,
+#actionButtonImg,
+#actionButtonText {
+  display: none;
+}
+
+.top-bar {
+  background-color: white !important;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+#closePreviewButton img {
+  display: none !important;
+}
+
+/* .bottom-bar {
+  background-color: white !important;
+  margin: 0 !important;
+} */
