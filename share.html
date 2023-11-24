@@ -24,7 +24,12 @@
       // }
 
       if ("share" in navigator) {
-        alert("yes");
+        alert("support");
+        navigator.share({
+          title: "Coding Articles - Dev.to",
+          text: "Dev.to",
+          url: "https://dev.to",
+        });
       } else {
         alert("no");
       }
