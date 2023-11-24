@@ -17,22 +17,22 @@
     </div>
 
     <script>
-      // var photo = localStorage.getItem("imagesnap");
-      // if (photo) {
-      //   var showImg = document.getElementById("show-img");
-      //   showImg.innerHTML += "<img src='" + photo + "'/>";
-      // }
-
-      if ("share" in navigator) {
-        alert("support");
-        navigator.share({
-          title: "Coding Articles - Dev.to",
-          text: "Dev.to",
-          url: "https://dev.to",
-        });
-      } else {
-        alert("no");
+      var photo = localStorage.getItem("imagesnap");
+      if (photo) {
+        var showImg = document.getElementById("show-img");
+        showImg.innerHTML += "<img src='" + photo + "'/>";
       }
+
+      // if ("share" in navigator) {
+      //   alert("support");
+      //   navigator.share({
+      //     title: "Coding Articles - Dev.to",
+      //     text: "Dev.to",
+      //     url: "https://dev.to",
+      //   });
+      // } else {
+      //   alert("no");
+      // }
 
       // if ("share" in navigator) {
       //   navigator.share({
