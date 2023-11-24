@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bangkok Adventure</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="bg-black">
+    <div class="w-full relative">
+      <div class="h-[calc(100vh-74px)] overflow-auto bg-red-400">
+        <div id="show-img" class="w-full bg-black"></div>
+      </div>
+      <div class="absolute top-0 right-0 z-50">
+        <img src="/images/Logo.png" class="w-[200px]" />
+      </div>
+    </div>
+
+    <script>
+      function shareFile(file, title, text) {
+        if (navigator.canShare && navigator.canShare({ files: [file] })) {
+          navigator
+            .share({
+              files: [file],
+              title,
+              text,
+            })
+            .then(() => alert("Share was successful."))
+            .catch((error) => alert("Sharing failed", error));
+        } else {
+          alert(`Your system doesn't support sharing files.`);
+        }
+      }
+
+      var photo = localStorage.getItem("imagesnap");
+      if (photo) {
+        var showImg = document.getElementById("show-img");
+        showImg.innerHTML += "<img src='" + photo + "'/>";
+
+        // const link = document.createElement("a");
+        // link.download = "download.png";
+
+        // // alert("can: " + JSON.stringify(navigator));
+
+        // link.href = photo;
+        // link.click();
+        // link.delete;
+      }
+    </script>
+  </body>
+</html>

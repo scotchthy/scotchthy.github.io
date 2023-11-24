@@ -12,18 +12,22 @@
   </head>
   <body>
     <div
-      class="w-full h-screen bg-[url('/public/images/bg_small.jpg')] bg-cover bg-center bg-no-repeat"
+      class="w-full h-screen bg-[url('/images/bg_small.jpg')] bg-cover bg-center bg-no-repeat"
     >
       <div class="flex flex-col w-full h-screen justify-center items-center">
-        <div class="w-[350px] mb-20">
-          <img src="/public/images/logo_small.png" alt="Bangkok Adventure" />
+        <div class="w-[350px] mb-10">
+          <img src="/images/logo_small.png" alt="Bangkok Adventure" />
         </div>
         <div class="w-[150px]">
-          <a href="/arpage.html">
-            <img src="/public/images/StartButtonWithText.png" alt="Start" />
+          <a href="/scan.html">
+            <img src="/images/StartButtonWithText.png" alt="Start" />
           </a>
         </div>
       </div>
     </div>
+
+    <script>
+      localStorage.removeItem("pttimg");
+    </script>
   </body>
 </html>
