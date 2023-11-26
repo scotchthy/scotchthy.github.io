@@ -20,90 +20,106 @@
       #main-capture-btn{
         text-align: center;
       }
+      #main-loading{
+        z-index: 999; 
+        position: absolute; 
+        bottom: 300px;
+        width: 100%;
+        text-align: center;
+        display: none;
+      }
+      #main-loading span{
+        background: rgba(255,255,255,0.5); 
+        padding: 10px 25px; 
+        border-radius: 10px;
+        font-weight: bold;
+        font-size: 20px;
+      }
     </style>
   </head>
   <body>
     <div id="main-scan">
       <div id="main-ar">
-        <a-scene mindar-image="imageTargetSrc: https://s3.ap-southeast-1.amazonaws.com/dev-storage.mxrth.co/ptt/ptt-content-labs/targets/NewTargets.mind;" color-space="sRGB" renderer="colorManagement: true, physicallyCorrectLights" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
+        <a-scene mindar-image="imageTargetSrc: targets.mind;" color-space="sRGB" renderer="colorManagement: true, physicallyCorrectLights" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
+        <!-- <a-scene mindar-image="imageTargetSrc: https://s3.ap-southeast-1.amazonaws.com/dev-storage.mxrth.co/ptt/ptt-content-labs/targets/NewTargets.mind;" color-space="sRGB" renderer="colorManagement: true, physicallyCorrectLights" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false"> -->
           <a-assets>
-            <a-asset-item id="rinsingSpray"
-              src="https://s3.ap-southeast-1.amazonaws.com/dev-storage.mxrth.co/ptt/ptt-content-labs/models/gltf/PTT_RinsingSpray.gltf"></a-asset-item>
-            <a-asset-item id="handfan"
-              src="https://s3.ap-southeast-1.amazonaws.com/dev-storage.mxrth.co/ptt/ptt-content-labs/models/gltf/PTT_Handfan.gltf"></a-asset-item>
             <a-asset-item id="bus"
               src="https://s3.ap-southeast-1.amazonaws.com/dev-storage.mxrth.co/ptt/ptt-content-labs/models/gltf/PTT_Bus.gltf"></a-asset-item>
+            <a-asset-item id="cola"
+              src="https://s3.ap-southeast-1.amazonaws.com/dev-storage.mxrth.co/ptt/ptt-content-labs/models/gltf/PTT_Cola.gltf"></a-asset-item>
             <a-asset-item id="condimentHolder"
               src="https://s3.ap-southeast-1.amazonaws.com/dev-storage.mxrth.co/ptt/ptt-content-labs/models/gltf/PTT_CondimentHolder.gltf"></a-asset-item>
-            <a-asset-item id="greenCurry"
-              src="https://s3.ap-southeast-1.amazonaws.com/dev-storage.mxrth.co/ptt/ptt-content-labs/models/gltf/PTT_GreenCurry.gltf"></a-asset-item>
-            <a-asset-item id="syamsi"
-              src="https://s3.ap-southeast-1.amazonaws.com/dev-storage.mxrth.co/ptt/ptt-content-labs/models/gltf/PTT_Syamsi.gltf"></a-asset-item>
             <a-asset-item id="flowerGarland"
               src="https://s3.ap-southeast-1.amazonaws.com/dev-storage.mxrth.co/ptt/ptt-content-labs/models/gltf/PTT_FlowerGarland.gltf"></a-asset-item>
-            <a-asset-item id="yadom"
-              src="https://s3.ap-southeast-1.amazonaws.com/dev-storage.mxrth.co/ptt/ptt-content-labs/models/gltf/PTT_Yadom.gltf"></a-asset-item>
+            <a-asset-item id="greenCurry"
+              src="https://s3.ap-southeast-1.amazonaws.com/dev-storage.mxrth.co/ptt/ptt-content-labs/models/gltf/PTT_GreenCurry.gltf"></a-asset-item>
+            <a-asset-item id="handfan"
+              src="https://s3.ap-southeast-1.amazonaws.com/dev-storage.mxrth.co/ptt/ptt-content-labs/models/gltf/PTT_Handfan.gltf"></a-asset-item>
             <a-asset-item id="lottery"
               src="https://s3.ap-southeast-1.amazonaws.com/dev-storage.mxrth.co/ptt/ptt-content-labs/models/gltf/PTT_Lottery.gltf"></a-asset-item>
+            <a-asset-item id="rinsingSpray"
+              src="https://s3.ap-southeast-1.amazonaws.com/dev-storage.mxrth.co/ptt/ptt-content-labs/models/gltf/PTT_RinsingSpray.gltf"></a-asset-item>
             <a-asset-item id="shire"
               src="https://s3.ap-southeast-1.amazonaws.com/dev-storage.mxrth.co/ptt/ptt-content-labs/models/gltf/PTT_Shire.gltf"></a-asset-item>
             <a-asset-item id="shoes"
               src="https://s3.ap-southeast-1.amazonaws.com/dev-storage.mxrth.co/ptt/ptt-content-labs/models/gltf/PTT_Shoes.gltf"></a-asset-item>
-            <a-asset-item id="cola"
-              src="https://s3.ap-southeast-1.amazonaws.com/dev-storage.mxrth.co/ptt/ptt-content-labs/models/gltf/PTT_Cola.gltf"></a-asset-item>
             <a-asset-item id="spoon"
               src="https://s3.ap-southeast-1.amazonaws.com/dev-storage.mxrth.co/ptt/ptt-content-labs/models/gltf/PTT_Spoon.gltf"></a-asset-item>
+            <a-asset-item id="syamsi"
+              src="https://s3.ap-southeast-1.amazonaws.com/dev-storage.mxrth.co/ptt/ptt-content-labs/models/gltf/PTT_Syamsi.gltf"></a-asset-item>
             <a-asset-item id="tukTuk"
               src="https://s3.ap-southeast-1.amazonaws.com/dev-storage.mxrth.co/ptt/ptt-content-labs/models/gltf/PTT_TukTuk.gltf"></a-asset-item>
+            <a-asset-item id="yadom"
+              src="https://s3.ap-southeast-1.amazonaws.com/dev-storage.mxrth.co/ptt/ptt-content-labs/models/gltf/PTT_Yadom.gltf"></a-asset-item>
             <a-asset-item id="zebra"
               src="https://s3.ap-southeast-1.amazonaws.com/dev-storage.mxrth.co/ptt/ptt-content-labs/models/gltf/PTT_Zebra.gltf"></a-asset-item>
           </a-assets>
 
           <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
 
-          <a-entity mindar-image-target="targetIndex: 14" found-model data="rinsingSpray">
-            <a-gltf-model rotation="30 0 0" position="0 0 0.1" scale="0.01 0.01 0.01" src="#rinsingSpray">
-          </a-entity>
-          <a-entity mindar-image-target="targetIndex: 9" found-model data="handfan">
-            <a-gltf-model rotation="30 0 0" position="0 0 0.1" scale="0.01 0.01 0.01" src="#handfan">
-          </a-entity>
-          <a-entity mindar-image-target="targetIndex: 12" found-model data="bus">
+          <a-entity mindar-image-target="targetIndex: 0" found-model data="bus">
             <a-gltf-model rotation="30 0 0" position="0 0 0.1" scale="0.01 0.01 0.01" src="#bus">
           </a-entity>
-          <a-entity mindar-image-target="targetIndex: 7" found-model data="condimentHolder">
-            <a-gltf-model rotation="30 0 0" position="0 0 0.1" scale="0.01 0.01 0.01" src="#condimentHolder">
-          </a-entity>
-          <a-entity mindar-image-target="targetIndex: 5" found-model data="greenCurry">
-            <a-gltf-model rotation="30 0 0" position="0 0 0.1" scale="0.01 0.01 0.01" src="#greenCurry">
-          </a-entity>
-          <a-entity mindar-image-target="targetIndex: 0" found-model data="syamsi">
-            <a-gltf-model rotation="30 0 0" position="0 0 0.1" scale="0.01 0.01 0.01" src="#syamsi">
-          </a-entity>
-          <a-entity mindar-image-target="targetIndex: 8" found-model data="flowerGarland">
-            <a-gltf-model rotation="30 0 0" position="0 0 0.1" scale="0.01 0.01 0.01" src="#flowerGarland">
-          </a-entity>
-          <a-entity mindar-image-target="targetIndex: 11" found-model data="yadom">
-            <a-gltf-model rotation="30 0 0" position="0 0 0.1" scale="0.01 0.01 0.01" src="#yadom">
-          </a-entity>
-          <a-entity mindar-image-target="targetIndex: 1" found-model data="lottery">
-            <a-gltf-model rotation="30 0 0" position="0 0 0.1" scale="0.01 0.01 0.01" src="#lottery">
-          </a-entity>
-          <a-entity mindar-image-target="targetIndex: 13" found-model data="shire">
-            <a-gltf-model rotation="30 0 0" position="0 0 0.1" scale="0.01 0.01 0.01" src="#shire">
-          </a-entity>
-          <a-entity mindar-image-target="targetIndex: 3" found-model data="shoes">
-            <a-gltf-model rotation="30 0 0" position="0 0 0.1" scale="0.01 0.01 0.01" src="#shoes">
-          </a-entity>
-          <a-entity mindar-image-target="targetIndex: 6" found-model data="cola">
+          <a-entity mindar-image-target="targetIndex: 1" found-model data="cola">
             <a-gltf-model rotation="30 0 0" position="0 0 0.1" scale="0.01 0.01 0.01" src="#cola">
           </a-entity>
-          <a-entity mindar-image-target="targetIndex: 2" found-model data="spoon">
+          <a-entity mindar-image-target="targetIndex: 2" found-model data="condimentHolder">
+            <a-gltf-model rotation="30 0 0" position="0 0 0.1" scale="0.01 0.01 0.01" src="#condimentHolder">
+          </a-entity>
+          <a-entity mindar-image-target="targetIndex: 3" found-model data="flowerGarland">
+            <a-gltf-model rotation="30 0 0" position="0 0 0.1" scale="0.01 0.01 0.01" src="#flowerGarland">
+          </a-entity>
+          <a-entity mindar-image-target="targetIndex: 4" found-model data="greenCurry">
+            <a-gltf-model rotation="30 0 0" position="0 0 0.1" scale="0.01 0.01 0.01" src="#greenCurry">
+          </a-entity>
+          <a-entity mindar-image-target="targetIndex: 5" found-model data="handfan">
+            <a-gltf-model rotation="30 0 0" position="0 0 0.1" scale="0.01 0.01 0.01" src="#handfan">
+          </a-entity>
+          <a-entity mindar-image-target="targetIndex: 6" found-model data="lottery">
+            <a-gltf-model rotation="30 0 0" position="0 0 0.1" scale="0.01 0.01 0.01" src="#lottery">
+          </a-entity>
+          <a-entity mindar-image-target="targetIndex: 7" found-model data="rinsingSpray">
+            <a-gltf-model rotation="30 0 0" position="0 0 0.1" scale="0.01 0.01 0.01" src="#rinsingSpray">
+          </a-entity>
+          <a-entity mindar-image-target="targetIndex: 8" found-model data="shire">
+            <a-gltf-model rotation="30 0 0" position="0 0 0.1" scale="0.01 0.01 0.01" src="#shire">
+          </a-entity>
+          <a-entity mindar-image-target="targetIndex: 9" found-model data="shoes">
+            <a-gltf-model rotation="30 0 0" position="0 0 0.1" scale="0.01 0.01 0.01" src="#shoes">
+          </a-entity>
+          <a-entity mindar-image-target="targetIndex: 10" found-model data="spoon">
             <a-gltf-model rotation="30 0 0" position="0 0 0.1" scale="0.01 0.01 0.01" src="#spoon">
           </a-entity>
-          <a-entity mindar-image-target="targetIndex: 4" found-model data="tukTuk">
+          <a-entity mindar-image-target="targetIndex: 11" found-model data="syamsi">
+            <a-gltf-model rotation="30 0 0" position="0 0 0.1" scale="0.01 0.01 0.01" src="#syamsi">
+          </a-entity>
+          <a-entity mindar-image-target="targetIndex: 12" found-model data="tukTuk">
             <a-gltf-model rotation="30 0 0" position="0 0 0.1" scale="0.01 0.01 0.01" src="#tukTuk">
           </a-entity>
-          <a-entity mindar-image-target="targetIndex: 10" found-model data="zebra">
+          <a-entity mindar-image-target="targetIndex: 13" found-model data="yadom">
+            <a-gltf-model rotation="30 0 0" position="0 0 0.1" scale="0.01 0.01 0.01" src="#yadom">
+          </a-entity>
+          <a-entity mindar-image-target="targetIndex: 14" found-model data="zebra">
             <a-gltf-model rotation="30 0 0" position="0 0 0.1" scale="0.01 0.01 0.01" src="#zebra">
           </a-entity>
         </a-scene>
@@ -111,19 +127,25 @@
       <div id="image-logo" style="z-index: 999; position: absolute; right: 0; top: 0;">
         <img src="/images/Logo.png" width="200" />
       </div>
+      <div id="main-loading">
+        <span>Loading...</span>
+      </div>
       <div id="main-capture">
         <div id="main-capture-btn">
           <img src="/images/SnapButton2.png" alt="snap" id="main-capture-btn-img" />
         </div>
       </div>
+
     </div>
     
     <script>
       var take_photo_btn = document.getElementById("main-capture-btn-img");
+      var mainLoading = document.getElementById('main-loading')
   
       // Snapshot button
       take_photo_btn.addEventListener("click", function (e) {
         e.preventDefault();
+        mainLoading.style.display = 'block';
         const video = document.querySelector("video");
         video.width = window.innerWidth;
         video.height = window.innerHeight;
@@ -141,16 +163,12 @@
         var resizedContext = resizedCanvas.getContext("2d");
         var width = window.innerWidth;
         var height = window.innerHeight;
-        // var width = video.videoWidth;
-        // var height = video.videoHeight;
         var aScene = document
         .querySelector("a-scene")
         .components.screenshot.getCanvas("perspective");
   
         if (width && height) {
           //set the size of the canvas video
-          // resizedCanvas.width = width;
-          // resizedCanvas.height = height;
           resizedCanvas.width = window.innerWidth;
           resizedCanvas.height = window.innerHeight;
   
